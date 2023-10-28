@@ -1,0 +1,1 @@
+<li style='margin-bottom: 10px;'><a href="/users/{{$user->id}}">{{$user->name}}</a></li>
