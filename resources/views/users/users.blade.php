@@ -1,22 +1,19 @@
 @extends('layout')
 
-@section('title', $title)
+@section('title', 'All Users')
 
 @section('content')
-
-  <!-- @section('button')
-    <span>Play</span>
-    <button>Play</button>
-  @show -->
-
-  <h1>Users List</h1>   
+  <h1>All Users</h1>   
   <ul>
-
-  @each('users.single-user', $users, 'user')
-
+  @if(count($users) == 0)
+    <li>Пользователей нет</li>
+  @else
+    @foreach($users as $user)
+      <li><a href="/users/{{$user->id}}">{{$user->name}} {{$user->lastname}}</a>  <a href="/users/{{$user->id}}/edit">&#9998;</a>
+      <a href="/users/{{$user->id}}/delete">&#10006;</a></li>
+    @endforeach 
+    <p><a href="/users_create" style='border: 1px solid black; border-radius: 3px;'>Add a user</a></p>
+  @endif
   </ul>
-
-  <!-- @yield('button') -->
-
 @endsection 
 

@@ -19,12 +19,28 @@ Route::get('/', function () {
 });
 
 Route::get('/users', [Controllers\UserController::class, 'index']);
-Route::get('/users/{name}', [Controllers\UserController::class, 'show']);
+Route::get('/users/{id}', [Controllers\UserController::class, 'show']);
+Route::get('/users/{id}/edit', [Controllers\UserController::class, 'edit']);
+Route::post('/users/{id}', [Controllers\UserController::class, 'update_user']);
 
-Route::get('/form', [Controllers\FormController::class, 'index']);
+Route::get('/users/{id}/delete', [Controllers\UserController::class, 'delete']);
+Route::get('/users_create', [Controllers\UserController::class, 'create']);
+Route::post('/users', [Controllers\UserController::class, 'store']);
 
+Route::get('/users/{id}/createpost', [Controllers\PostController::class, 'create']);
+Route::get('/users/{id}/posts', [Controllers\PostController::class, 'show']);
+Route::post('/users/{id}/posts', [Controllers\PostController::class, 'store']);
+Route::get('/posts', [Controllers\PostController::class, 'index']);
 
-Route::post('/form', [Controllers\FormController::class, 'store']);
+Route::get('/users/{id}/posts/{idp}/edit', [Controllers\PostController::class, 'edit']);
+Route::post('/users/{id}/posts/{idp}/edit', [Controllers\PostController::class, 'update_post']);
+Route::get('/users/{id}/posts/{idp}/delete', [Controllers\PostController::class, 'delete']);
+
+Route::get('/users/{id}/post/{idp}', [Controllers\CommentController::class, 'index']);
+Route::get('/users/{id}/post/{idp}/create', [Controllers\CommentController::class, 'create']);
+Route::post('/users/{id}/post/{idp}', [Controllers\CommentController::class, 'store']);
+Route::get('/users/{id}/post/{idp}/comment/{idc}/delete', [Controllers\CommentController::class, 'delete']);
+
 
 Route::get('/admin', [Controllers\AdminController::class, 'index']);
 

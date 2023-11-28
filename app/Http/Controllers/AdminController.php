@@ -4,21 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class AdminController extends Controller
 {
     public function index(){
         
-        $files = Storage::files('test-data');
-        $data = [];
-        foreach ($files as $file){
-            $id = basename($file, '.json');
-            $data[$id] = json_decode(Storage::get($file));
-        }
+        return UserResource::collection(User::all());
+    }
 
-        //dd($data);
+    public function show($id){
         
-        return view('form.admin', ['data' => $data]);
+        return new UserResource(User::find($id));
     }
 
 }

@@ -18,7 +18,7 @@
       height: 25px;
     }
     footer{
-      position: absolute;
+      position: relative;
 	    left: 0;
 	    bottom: 0;
 	    width: 100%;
@@ -32,7 +32,7 @@
     .content{
       position: relative;
       width: 100%;
-      min-height: 100%;
+      min-height: 595px;
     }
     a{
       text-decoration: none;

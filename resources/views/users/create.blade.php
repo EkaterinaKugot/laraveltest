@@ -1,21 +1,15 @@
 @extends('layout')
 
-@section('title', "Form")
+@section('title', "Add a user")
 
 @section('content')
 
-<h1>User Form</h1>
-
-@if (session('message'))
-    <div style='color: green; margin-bottom: 10px;'>
-        {{ session('message') }}
-    </div>
-@endif
+<h1>Add a user</h1>
 
 <div>
       
 </div>
-<form method="post" action="/form">
+<form method="post" action="/users">
     @csrf
 
 <div>
@@ -66,7 +60,13 @@
       @enderror
 </div>
 <br>
-      <button type="submit" name="button">Отправить</button>
+<div>
+      @foreach($roles as $role)
+            <input type="checkbox" name="roles[]" value="{{$role->id}}"/>{{$role->name}}<br/>
+      @endforeach 
+</div>
+<br>
+      <button type="submit" name="button">Сreate</button>
 </form>
 
 @endsection
