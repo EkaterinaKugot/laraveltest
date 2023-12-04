@@ -12,7 +12,14 @@
       <div style='border: 1px solid black; border-radius: 3px; padding:4px;'>
         <a href="/users/{{$post->user->id}}">{{$post->user->name}} {{$post->user->lastname}}</a>
         <a href="/users/{{$id}}/posts/{{$post->id}}/edit">&#9998;</a>
-      <a href="/users/{{$id}}/posts/{{$post->id}}/delete">&#10006;</a><br>
+        <a href="/users/{{$id}}/posts/{{$post->id}}/delete">&#10006;</a>
+        <span>
+          @if($post->is_published == 1)
+            Published
+          @else
+            Not published
+          @endif
+        </span><br>
         <div style='border: 1px solid black; border-radius: 3px; padding:4px;'>
           <p style='font-weight: bold;'>{{$post->title}}<p>
           <p>{{$post->content}}<p>

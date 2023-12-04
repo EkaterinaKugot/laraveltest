@@ -5,7 +5,7 @@
 @section('content')
 
 <h1>Add a post</h1>
-
+ 
 <div>
       
 </div>
@@ -27,6 +27,12 @@
       <div style="color: red; font-size: 14px">{{$message}}</div>
       @enderror
 </div>
+<br>
+<div>
+      <label>To publish</label>
+      <input type="checkbox" name="is_published" value="1">
+</div>
+<br>
       <button type="submit" name="button">Сreate</button>
 </form>
 

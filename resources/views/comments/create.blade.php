@@ -13,8 +13,7 @@
     @csrf
 <div>
       <label>Content</label>
-      <textarea style='resize: none;' rows="4" cols="35" name="content" value="{{ old('content') }}">
-      </textarea>
+      <textarea style='resize: none;' rows="4" cols="35" name="content" value="{{ old('content') }}"></textarea>
       @error('content')
       <div style="color: red; font-size: 14px">{{$message}}</div>
       @enderror

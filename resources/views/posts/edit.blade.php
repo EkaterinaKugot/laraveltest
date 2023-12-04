@@ -28,6 +28,12 @@
       <div style="color: red; font-size: 14px">{{$message}}</div>
       @enderror
 </div>
+<br>
+<div>
+      <label>To publish</label>
+      <input type="checkbox" name="is_published" @if($post->is_published == 1) checked @endif value="1">
+</div>
+<br>
       <button type="submit" name="button">Update</button>
 </form>
 

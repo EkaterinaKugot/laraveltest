@@ -3,9 +3,17 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Console\Scheduling\Schedule;
 
 class Kernel extends HttpKernel
 {
+    protected $commands = [
+        'App\Console\Commands\PublishContent'
+    ];
+
+    protected function schedule(Schedule $schedule){
+        $schedule->command('publish:content')->everyMinute();
+    }
     /**
      * The application's global HTTP middleware stack.
      *

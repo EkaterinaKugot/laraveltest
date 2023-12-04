@@ -44,3 +44,5 @@ Route::get('/users/{id}/post/{idp}/comment/{idc}/delete', [Controllers\CommentCo
 
 Route::get('/admin', [Controllers\AdminController::class, 'index']);
 
+Route::get('/comments', [Controllers\CommentController::class, 'moderation']);
+Route::get('/comments/moderation/{id}', [Controllers\CommentController::class, 'approve']);

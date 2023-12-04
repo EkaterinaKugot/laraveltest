@@ -12,7 +12,7 @@ class CommentController extends Controller
 { 
     public function index($id, $idp){
         $comments = Comment::where('commentable_type', 'App\Models\Post')
-        ->where('commentable_id', $idp)
+        ->where('commentable_id', $idp)->where('approved', true)
         ->get();
         $post = Post::with('user')->find($idp);
         return view('comments.post_com', compact('comments', 'post'));
@@ -62,5 +62,17 @@ class CommentController extends Controller
 
             return redirect('/users/'.$id.'/post/'.$idp);
         }
+    }
+
+    public function moderation(){
+        $comments = Comment::where('approved', false)->get();
+        return view('comments.moderation', compact('comments'));
+    }
+
+    public function approve($id){
+        $comment = Comment::find($id);
+        $comment->approved = true;
+        $comment->save();
+        return redirect('/comments');
     }
 }
